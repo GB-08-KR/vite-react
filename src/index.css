@@ -1,68 +1,83 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ===== BlinkNotifier responsive layout ===== */
+:root{
+  --bg:#f5f7fb;
+  --fg:#111;
+  --muted:#666;
+  --border:#e5e7eb;
+  --card:#ffffff;
+  --brand:#111;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+html, body, #root { height: 100%; }
+body { background: var(--bg); color: var(--fg); }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
+.page {
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(24px, 5vw, 80px);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.card {
+  width: min(100%, 1000px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: 0 6px 24px rgba(17,17,17,0.06);
+  padding: clamp(24px, 4vw, 48px);
+
+  /* 데스크톱에선 2열, 모바일에선 1열 */
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(16px, 4vw, 40px);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+@media (max-width: 900px){
+  .card { grid-template-columns: 1fr; }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.title {
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.15;
+  margin: 0 0 8px 0;
+}
+
+.desc {
+  color: var(--muted);
+  margin: 0 0 28px 0;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .05s ease, box-shadow .2s ease;
+  box-shadow: 0 4px 14px rgba(17,17,17,0.12);
+}
+.cta:hover { transform: translateY(-1px); }
+.cta:active { transform: translateY(0); }
+
+.footer {
+  margin-top: 36px;
+  color: #999;
+  font-size: 14px;
+}
+
+/* 우측 목업 영역(원하면 이미지 넣기) */
+.mock {
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #fff;
+  aspect-ratio: 10 / 7;
+  display: grid;
+  place-items: center;
+  color: #bbb;
+  font-size: 14px;
 }
