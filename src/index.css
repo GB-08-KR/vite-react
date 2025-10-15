@@ -1,4 +1,4 @@
-/* ===== BlinkNotifier responsive layout (IT Style) ===== */
+/* ===== Blink Notifier responsive layout (IT Style) ===== */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600&family=Poppins:wght@400;600&display=swap");
 
 :root {
@@ -7,12 +7,10 @@
   --muted: #666;
   --border: #e5e7eb;
   --card: #ffffff;
-  --brand: #0070f3; /* IT 느낌 나는 블루 */
+  --brand: #0070f3; /* IT 블루 */
 }
 
-html,
-body,
-#root {
+html, body, #root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -41,17 +39,16 @@ body {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 24px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.05);
   padding: clamp(24px, 4vw, 48px);
 
-  /* 데스크톱에선 2열, 모바일에선 1열 */
+  /* 데스크톱 2열 / 모바일 1열 */
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   align-items: center;
   gap: clamp(16px, 4vw, 40px);
 }
 
-/* 반응형 전환 */
 @media (max-width: 900px) {
   .card {
     grid-template-columns: 1fr;
@@ -59,18 +56,17 @@ body {
   }
 }
 
-/* 제목 */
+/* 제목 / 설명 */
 .title {
   font-size: clamp(28px, 4vw, 48px);
   line-height: 1.15;
   font-weight: 600;
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
 }
 
-/* 설명 텍스트 */
 .desc {
   color: var(--muted);
-  margin: 0 0 28px 0;
+  margin: 0 0 28px;
   font-size: clamp(16px, 2vw, 18px);
   font-weight: 400;
 }
@@ -86,18 +82,19 @@ body {
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  letter-spacing: 0.3px;
-  transition: transform 0.05s ease, box-shadow 0.25s ease, background 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0, 112, 243, 0.25);
+  letter-spacing: .3px;
+  transition: transform .05s ease, box-shadow .25s ease, background .25s ease;
+  box-shadow: 0 4px 14px rgba(0,112,243,.25);
+  border: 0;
 }
 
-.cta:hover {
-  background: #0059c9;
-  transform: translateY(-2px);
-}
+.cta:hover { background: #0059c9; transform: translateY(-2px); }
+.cta:active { transform: translateY(0); }
 
-.cta:active {
-  transform: translateY(0);
+/* 키보드 포커스 접근성 */
+.cta:focus-visible {
+  outline: 3px solid rgba(0,112,243,.4);
+  outline-offset: 3px;
 }
 
 /* 하단 저작권 */
@@ -124,31 +121,10 @@ body {
   height: 100%;
   object-fit: cover;
   border-radius: 18px;
-}}
-.cta:hover { transform: translateY(-1px); }
-.cta:active { transform: translateY(0); }
-
-.footer {
-  margin-top: 36px;
-  color: #999;
-  font-size: 14px;
 }
 
-/* 우측 목업 영역(원하면 이미지 넣기) */
-.mock {
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: #fff;
-  aspect-ratio: 10 / 7;
-  display: grid;
-  place-items: center;
-  color: #bbb;
-  font-size: 14px;
-}
 /* ===== Loading spinner for CTA ===== */
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin { to { transform: rotate(360deg); } }
 
 .spinner {
   width: 16px;
@@ -156,14 +132,16 @@ body {
   border-radius: 50%;
   border: 2px solid rgba(255,255,255,0.45);
   border-top-color: #fff;
-  animation: spin 0.8s linear infinite;
+  animation: spin .8s linear infinite;
   margin-right: 8px;
+  display: inline-block;      /* 🔧 보강: 인라인 표시 */
+  vertical-align: middle;     /* 🔧 보강: 텍스트와 수직 정렬 */
 }
 
 /* 로딩/비활성 상태 스타일 */
 .cta[disabled],
 .cta[aria-busy="true"] {
-  cursor: not-allowed;
-  opacity: 0.85;
-  box-shadow: 0 2px 10px rgba(0, 112, 243, 0.18);
+  cursor: wait;
+  opacity: .85;
+  box-shadow: 0 2px 10px rgba(0,112,243,.18);
 }
