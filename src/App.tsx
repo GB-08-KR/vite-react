@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+    <div style={{
+      fontFamily: 'Pretendard, sans-serif',
+      textAlign: 'center',
+      padding: '100px 20px',
+      backgroundColor: '#f9fafb',
+      minHeight: '100vh',
+      color: '#111'
+    }}>
+      <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>BlinkNotifier</h1>
+      <p style={{ color: '#555', marginBottom: '40px' }}>
+        눈 깜빡임 감지 프로그램을 지금 다운로드하세요.
       </p>
-    </>
-  )
+      <a
+        href="https://drive.google.com/drive/folders/1-JAHENSHSObMyu_YiorOyE4aK88yS2e0?usp=share_link"
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          display: 'inline-block',
+          background: '#111',
+          color: '#fff',
+          padding: '14px 28px',
+          borderRadius: '12px',
+          textDecoration: 'none',
+          fontWeight: '600',
+          transition: '0.3s'
+        }}
+      >
+        📦 다운로드
+      </a>
+      <p style={{
+        marginTop: '40px',
+        color: '#999',
+        fontSize: '14px'
+      }}>
+        © 2025 BlinkNotifier
+      </p>
+    </div>
+  );
 }
-
-export default App
